@@ -12,7 +12,6 @@ class Message extends Component  {
   render () {
     const {messageId, name, message, msgToObjAndMethod} = this.props
     const styleOn = this.state.toggleEdit ? {} : {display: 'none'}
-    // const styleOff = this.state.toggleEdit ? {display: 'none'} : {}
 
     return(
       <div className="row mt-2 mb-2">

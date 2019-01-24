@@ -35,7 +35,6 @@ class App extends Component {
       headers: this.state.headers
     })
     const responseJson = await submitRequest.json()
-    console.log('submitted', responseJson)
 
     this.setState({messages: [...this.state.messages, responseJson]})
   }
@@ -43,7 +42,6 @@ class App extends Component {
   editMessage = async (messageId, messageObj) => {
     
     let messageIndex = this.state.messages.map(message => message.id).indexOf(messageId)
-    console.log('edit',messageIndex, messageObj)
 
     const submitRequest = await fetch(`${API}/${messageId}`, {
       method: 'PATCH',
@@ -51,7 +49,6 @@ class App extends Component {
       headers: this.state.headers
     })
     const responseJson = await submitRequest.json()
-    console.log('edited', responseJson)
     this.setState({messages: [
       ...this.state.messages.slice(0, messageIndex),
       responseJson,
@@ -60,16 +57,13 @@ class App extends Component {
   }
   
   deleteMessage = async (messageId, messageObj) => {
-    console.log('delete clicked!', messageId, messageObj)
     let newMessages = this.state.messages.filter(message => (message.id !== messageId))
     
-    const submitRequest = await fetch(`${API}/${messageId}`, {
+    await fetch(`${API}/${messageId}`, {
       method: 'DELETE',
       body: messageObj,
       headers: this.state.headers
     })
-    let responseJson = await submitRequest.json()
-    console.log('deleted', responseJson)
     this.setState({messages: newMessages})
   }
 
@@ -86,7 +80,6 @@ class App extends Component {
       }
       messageObj = JSON.stringify(messageObj)
       this.submitMessage(messageObj)
-      console.log('in msgToObj, submit', messageObj)
     }
     else if (method === "edit") {
       let messageObj = {
@@ -95,7 +88,6 @@ class App extends Component {
       }
       messageObj = JSON.stringify(messageObj)
       this.editMessage(messageId, messageObj)
-      console.log('in msgToObj, edit', messageId, messageObj)
     }
     else if (method === "delete") {
       let messageObj = {
@@ -103,7 +95,6 @@ class App extends Component {
       }
       messageObj = JSON.stringify(messageObj)
       this.deleteMessage(messageId, messageObj)
-      console.log('in msgToObj, delete', messageId, messageObj)
     }
   }
 
