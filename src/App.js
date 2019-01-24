@@ -10,7 +10,12 @@ class App extends Component {
   
   state = {
     messages: [],
-    toggleCompose: false
+    toggleCompose: false,
+    headers: {
+      'Content-type': 'application/json',
+      'Accept': 'application/json'
+    }
+
   }
 
   async componentDidMount(){
@@ -20,7 +25,17 @@ class App extends Component {
   }
 
   submitMessage = async (messageObj) => {
-    console.log(messageObj)
+    messageObj = JSON.stringify(messageObj)
+
+    const submitResponse = await fetch(API, {
+      method: 'POST',
+      body: messageObj,
+      headers: this.state.headers
+    })
+    const responseJson = await submitResponse.json()
+    console.log(responseJson)
+    
+    this.setState({messages: [...this.state.messages, responseJson]})
   }
 
   render() {
@@ -30,7 +45,7 @@ class App extends Component {
           <Navbar />
         </div>
         <div className="container">
-          <Compose submitMessage={this.submitMessage}/>
+          <Compose submitMessage={this.submitMessage} toggleCompose={this.toggleCompose}/>
           <Messages messages={this.state.messages}/>
         </div>
       </div>

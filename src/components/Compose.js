@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Compose = ({submitMessage}) => {
+const Compose = ({submitMessage, toggleCompose}) => {
 
   const messageToObj = (e) => {
     e.preventDefault()
