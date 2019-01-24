@@ -17,7 +17,6 @@ class App extends Component {
     const response = await fetch(API)
     const responseJson = await response.json()
     this.setState({messages: responseJson})
-    console.log(this.state.messages)
   }
 
 
