@@ -1,9 +1,20 @@
 import React from 'react';
 
-const Compose = () => {
+const Compose = ({submitMessage}) => {
+
+  const messageToObj = (e) => {
+    e.preventDefault()
+
+    const messageObj = {
+      name: e.target.nameInput.value,
+      message: e.target.messageInput.value 
+    }
+    submitMessage(messageObj)
+  }
+
   return(
     <div className="mt-4 border border-dark rounded p-4">
-      <form >
+      <form onSubmit={(e)=>{messageToObj(e)}}>
         <div className="form-group text-left font-weight-bold h2">
           <label htmlFor="name">What your name!</label>
           <input type="name" className="form-control" id="nameInput" placeholder="Name of you"/>

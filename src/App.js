@@ -19,7 +19,9 @@ class App extends Component {
     this.setState({messages: responseJson})
   }
 
-
+  submitMessage = async (messageObj) => {
+    console.log(messageObj)
+  }
 
   render() {
     return (
@@ -28,7 +30,7 @@ class App extends Component {
           <Navbar />
         </div>
         <div className="container">
-          <Compose />
+          <Compose submitMessage={this.submitMessage}/>
           <Messages messages={this.state.messages}/>
         </div>
       </div>

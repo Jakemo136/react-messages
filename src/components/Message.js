@@ -9,10 +9,10 @@ class Message extends Component  {
   render () {
     const {messageId, name, message} = this.props
     return(
-      <div className="row">
+      <div className="row mt-2 mb-2">
         <div className="col md-6">
           <div className="card text-left">
-            <h5 className="card-header">Mysterious Secret Message</h5>
+            <h5 className="card-header">Mysterious Secret Incoming Cryptic Message</h5>
             <div className="card-body">
               <h6 className="card-title font-italic font-weight-bold">{name}</h6>
               <p className="card-text">{message}</p>
@@ -22,7 +22,7 @@ class Message extends Component  {
           </div>
         </div>
         <div className="col md-6">
-        
+
         </div>
       </div>
     )
