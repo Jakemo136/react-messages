@@ -82,12 +82,32 @@ class App extends Component {
       this.submitMessage(messageObj)
     }
     else if (method === "edit") {
-      let messageObj = {
-        name: e.target.nameInput.value,
-        message: e.target.messageInput.value 
+      if (e.target.messageInput.value.length < 1 && e.target.nameInput.value.length < 1) {
+        return
       }
-      messageObj = JSON.stringify(messageObj)
-      this.editMessage(messageId, messageObj)
+      if (e.target.nameInput.value.length < 1) {
+        let messageObj = {
+          message: e.target.messageInput.value 
+        }  
+        messageObj = JSON.stringify(messageObj)
+        this.editMessage(messageId, messageObj)
+      }
+      if (e.target.messageInput.value.length < 1) {
+        let messageObj = {
+          name: e.target.nameInput.value
+        }  
+        messageObj = JSON.stringify(messageObj)
+        this.editMessage(messageId, messageObj)
+      }
+      else {
+        let messageObj = {
+          name: e.target.nameInput.value,
+          message: e.target.messageInput.value 
+        }
+        messageObj = JSON.stringify(messageObj)
+        this.editMessage(messageId, messageObj)
+      } 
+      
     }
     else if (method === "delete") {
       let messageObj = {
