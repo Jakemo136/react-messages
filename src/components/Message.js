@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Message = ({messageId, name, message}) => {
-  return(
-    <div>
-      <div className="card">
-        <h5 className="card-header">Featured</h5>
-        <div className="card-body">
-          <h5 className="card-title">Special title treatment</h5>
-          <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <button className="btn btn-secondary"><span className="far fa-edit"/>Boop to Edit</button>
-          <button className="btn btn-danger"><span className="far fa-trash-alt"/>Boop to Delete</button>
+class Message extends Component  {
+  state = {
+    toggleEdit: false
+  }
+  
+  
+  render () {
+    const {messageId, name, message} = this.props
+    return(
+      <div className="row">
+        <div className="col md-6">
+          <div className="card text-left">
+            <h5 className="card-header">Mysterious Secret Message</h5>
+            <div className="card-body">
+              <h6 className="card-title font-italic font-weight-bold">{name}</h6>
+              <p className="card-text">{message}</p>
+              <button className="btn btn-secondary"><span className="far fa-edit"/>Boop to Edit</button>
+              <button className="btn btn-danger"><span className="far fa-trash-alt"/>Boop to Delete</button>
+            </div>
+          </div>
+        </div>
+        <div className="col md-6">
+        
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default Message
