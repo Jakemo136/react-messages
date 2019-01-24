@@ -1,7 +1,7 @@
 import React from 'react';
 import Message from './Message'
 
-const Messages = ({messages, editMessage, deleteMessage}) => {
+const Messages = ({messages, editMessage, msgToObjAndMethod}) => {
   return(
     <div>
       {messages.map(({name, message, id})=><Message
@@ -10,7 +10,7 @@ const Messages = ({messages, editMessage, deleteMessage}) => {
         name={name}
         message={message}
         editMessage={editMessage}
-        deleteMessage={deleteMessage}
+        msgToObjAndMethod={msgToObjAndMethod}
       />)}
     </div>
   )

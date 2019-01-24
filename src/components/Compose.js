@@ -1,21 +1,14 @@
 import React from 'react';
 
-const Compose = ({submitMessage, toggle, toggleCompose}) => {
+const Compose = ({toggle, toggleCompose, msgToObjAndMethod}) => {
   const style = toggleCompose ? {} : {display: 'none'}
-
-  const messageToObj = (e) => {
-    e.preventDefault()
-
-    const messageObj = {
-      name: e.target.nameInput.value,
-      message: e.target.messageInput.value 
-    }
-    submitMessage(messageObj)
-  }
 
   return(
     <div className="mt-4 border border-dark rounded p-4" style={style}>
-      <form onSubmit={(e)=>{messageToObj(e), toggle("toggleCompose")}}>
+      <form onSubmit={(e)=>{
+          e.preventDefault() 
+          msgToObjAndMethod(e, "submit") 
+          toggle("toggleCompose")}}>
         <div className="form-group text-left font-weight-bold h2">
           <label htmlFor="name">What your name!</label>
           <input type="text" className="form-control" id="nameInput" placeholder="Name of you" required/>

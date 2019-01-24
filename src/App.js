@@ -33,13 +33,16 @@ class App extends Component {
       headers: this.state.headers
     })
     const responseJson = await submitResponse.json()
-    console.log(responseJson)
+    console.log('submitted', responseJson)
 
     this.setState({messages: [...this.state.messages, responseJson]})
   }
 
-  editMessage = async () => {
-    console.log('edit clicked!')
+  editMessage = async (messageId, messageObj) => {
+    let messageIndex = this.state.messages.map(message => message.id).indexOf(messageId)
+    console.log('edit',messageIndex, messageObj)
+
+
   }
   
   deleteMessage = async () => {
@@ -48,7 +51,30 @@ class App extends Component {
 
   toggle = (prop) => {
     this.setState({[prop]: !this.state[prop]})
-    console.log(this.state[prop])
+  }
+  
+  messageToObjAndMethod = (e, method, messageId) => {
+
+    if (method === "submit") {
+      let messageObj = {
+        name: e.target.nameInput.value,
+        message: e.target.messageInput.value 
+      }
+      this.submitMessage(messageObj)
+      console.log('in msgToObj, submit', messageObj)
+    }
+    else if (method === "edit") {
+      const messageObj = {
+        name: e.target.nameInput.value,
+        message: e.target.messageInput.value 
+      }
+      this.editMessage(messageId, messageObj)
+      console.log('in msgToObj, edit', messageId, messageObj)
+    }
+    else if (method === "delete") {
+      this.deleteMessage(messageId)
+      console.log('in msgToObj, delete', messageId)
+    }
   }
 
   render() {
@@ -61,11 +87,13 @@ class App extends Component {
           <Compose 
             submitMessage={this.submitMessage} 
             toggle={this.toggle} 
-            toggleCompose={this.state.toggleCompose}/>
+            toggleCompose={this.state.toggleCompose}
+            msgToObjAndMethod={this.messageToObjAndMethod}/>
           <Messages 
             messages={this.state.messages} 
             editMessage={this.editMessage}
-            deleteMessage={this.deleteMessage}/>
+            deleteMessage={this.deleteMessage}
+            msgToObjAndMethod={this.messageToObjAndMethod}/>
         </div>
       </div>
     );
