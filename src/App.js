@@ -38,7 +38,7 @@ class App extends Component {
     this.setState({messages: [...this.state.messages, responseJson]})
   }
 
-  toggleCompose = (prop) => {
+  toggle = (prop) => {
     this.setState({[prop]: !this.state[prop]})
     console.log(this.state[prop])
   }
@@ -47,10 +47,13 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-          <Navbar toggleCompose={this.toggleCompose}/>
+          <Navbar toggleCompose={this.toggle}/>
         </div>
         <div className="container">
-          <Compose submitMessage={this.submitMessage} toggleCompose={this.toggleCompose}/>
+          <Compose 
+            submitMessage={this.submitMessage} 
+            toggle={this.toggle} 
+            toggleCompose={this.state.toggleCompose}/>
           <Messages messages={this.state.messages}/>
         </div>
       </div>

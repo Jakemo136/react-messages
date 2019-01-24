@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Compose = ({submitMessage, toggleCompose}) => {
+const Compose = ({submitMessage, toggle, toggleCompose}) => {
   const style = toggleCompose ? {} : {display: 'none'}
 
   const messageToObj = (e) => {
@@ -14,8 +14,8 @@ const Compose = ({submitMessage, toggleCompose}) => {
   }
 
   return(
-    <div className="mt-4 border border-dark rounded p-4">
-      <form onSubmit={(e)=>{messageToObj(e), toggleCompose("toggleCompose")}}>
+    <div className="mt-4 border border-dark rounded p-4" style={style}>
+      <form onSubmit={(e)=>{messageToObj(e), toggle("toggleCompose")}}>
         <div className="form-group text-left font-weight-bold h2">
           <label htmlFor="name">What your name!</label>
           <input type="name" className="form-control" id="nameInput" placeholder="Name of you" required/>
