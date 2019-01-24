@@ -7,7 +7,8 @@ class Message extends Component  {
   
   
   render () {
-    const {messageId, name, message} = this.props
+    const {messageId, name, message, editMessage, deleteMessage} = this.props
+
     return(
       <div className="row mt-2 mb-2">
         <div className="col md-6">
@@ -16,13 +17,13 @@ class Message extends Component  {
             <div className="card-body">
               <h6 className="card-title font-italic font-weight-bold">{name}</h6>
               <p className="card-text">{message}</p>
-              <button className="btn btn-secondary"><span className="far fa-edit"/>Boop to Edit</button>
-              <button className="btn btn-danger"><span className="far fa-trash-alt"/>Boop to Delete</button>
+              <button className="btn btn-secondary" onClick={e=>editMessage(e)}><span className="far fa-edit"/>Boop to Edit</button>
+              <button className="btn btn-danger" onClick={e=>deleteMessage(e)}><span className="far fa-trash-alt"/>Boop to Delete</button>
             </div>
           </div>
         </div>
         <div className="col md-6">
-          
+
 
         </div>
       </div>

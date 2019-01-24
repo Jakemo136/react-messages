@@ -38,6 +38,14 @@ class App extends Component {
     this.setState({messages: [...this.state.messages, responseJson]})
   }
 
+  editMessage = async () => {
+    console.log('edit clicked!')
+  }
+  
+  deleteMessage = async () => {
+    console.log('delete clicked!')
+  }
+
   toggle = (prop) => {
     this.setState({[prop]: !this.state[prop]})
     console.log(this.state[prop])
@@ -54,7 +62,10 @@ class App extends Component {
             submitMessage={this.submitMessage} 
             toggle={this.toggle} 
             toggleCompose={this.state.toggleCompose}/>
-          <Messages messages={this.state.messages}/>
+          <Messages 
+            messages={this.state.messages} 
+            editMessage={this.editMessage}
+            deleteMessage={this.deleteMessage}/>
         </div>
       </div>
     );
