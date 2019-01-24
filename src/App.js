@@ -85,14 +85,14 @@ class App extends Component {
       if (e.target.messageInput.value.length < 1 && e.target.nameInput.value.length < 1) {
         return
       }
-      if (e.target.nameInput.value.length < 1) {
+      else if (e.target.nameInput.value.length < 1 && e.target.messageInput.value.length >= 1) {
         let messageObj = {
           message: e.target.messageInput.value 
         }  
         messageObj = JSON.stringify(messageObj)
         this.editMessage(messageId, messageObj)
       }
-      if (e.target.messageInput.value.length < 1) {
+      else if (e.target.messageInput.value.length < 1 && e.target.nameInput.value.length >=1) {
         let messageObj = {
           name: e.target.nameInput.value
         }  
