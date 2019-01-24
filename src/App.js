@@ -20,6 +20,8 @@ class App extends Component {
     console.log(this.state.messages)
   }
 
+
+
   render() {
     return (
       <div className="App">
@@ -28,7 +30,7 @@ class App extends Component {
         </div>
         <div className="container">
           <Compose />
-          <Messages />
+          <Messages messages={this.state.messages}/>
         </div>
       </div>
     );
