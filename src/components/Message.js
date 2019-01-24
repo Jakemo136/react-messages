@@ -4,7 +4,7 @@ class Message extends Component  {
   state = {
     toggleEdit: false
   }
-  
+
   toggle = () => {
     this.setState({toggleEdit : !this.state.toggleEdit})
   }
@@ -29,7 +29,7 @@ class Message extends Component  {
         </div>
         <div className="col md-6" style={styleOn}>
           <div className="card text-left bg-dark text-light">
-            <h5 className="card-header">Oh look, <i className="far fa-hand-point-left"></i> <em>this guy</em> wants to edit a message</h5>
+            <h5 className="card-header">Oh look, <i className="far fa-hand-point-left"></i> <em>somebody</em> wants to edit a message</h5>
             <div className="card-body">
               <form onSubmit={e=>{
                 e.preventDefault() 

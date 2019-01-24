@@ -19,6 +19,7 @@ const Compose = ({toggle, toggleCompose, msgToObjAndMethod}) => {
           <input type="text" className="form-control" id="messageInput" placeholder="Words to sending" required/>
         </div>
         <button type="submit" className="btn btn-dark"><span className="fas fa-people-carry"/>Boop me to send!</button>
+        <small className="form-text text-muted h6 font-italic">Newest messages on the bottom, yo</small>
       </form>
     </div>
   )

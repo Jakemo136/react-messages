@@ -14,8 +14,11 @@ class App extends Component {
     headers: {
       'Content-type': 'application/json',
       'Accept': 'application/json'
+    },
+    composeDefault: {
+      name: '',
+      message: ''
     }
-
   }
 
   async componentDidMount(){
@@ -115,7 +118,8 @@ class App extends Component {
             submitMessage={this.submitMessage} 
             toggle={this.toggle} 
             toggleCompose={this.state.toggleCompose}
-            msgToObjAndMethod={this.messageToObjAndMethod}/>
+            msgToObjAndMethod={this.messageToObjAndMethod}
+            defaultState={this.state.composeDefault}/>
           <Messages 
             messages={this.state.messages} 
             editMessage={this.editMessage}
