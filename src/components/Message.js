@@ -22,6 +22,7 @@ class Message extends Component  {
           </div>
         </div>
         <div className="col md-6">
+          
 
         </div>
       </div>

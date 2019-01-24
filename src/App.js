@@ -34,15 +34,20 @@ class App extends Component {
     })
     const responseJson = await submitResponse.json()
     console.log(responseJson)
-    
+
     this.setState({messages: [...this.state.messages, responseJson]})
+  }
+
+  toggleCompose = (prop) => {
+    this.setState({[prop]: !this.state[prop]})
+    console.log(this.state[prop])
   }
 
   render() {
     return (
       <div className="App">
         <div>
-          <Navbar />
+          <Navbar toggleCompose={this.toggleCompose}/>
         </div>
         <div className="container">
           <Compose submitMessage={this.submitMessage} toggleCompose={this.toggleCompose}/>
