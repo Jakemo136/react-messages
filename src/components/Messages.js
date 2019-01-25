@@ -1,7 +1,7 @@
 import React from 'react';
 import Message from './Message'
 
-const Messages = ({messages, editMessage, msgToObjAndMethod}) => {
+const Messages = ({messages, editMessage, msgToObjAndMethod, popEditValues}) => {
   return(
     <div>
       {messages.map(({name, message, id})=><Message

@@ -21,7 +21,8 @@ class Message extends Component  {
             <div className="card-body">
               <h6 className="card-title font-italic font-weight-bold">{name}</h6>
               <p className="card-text">{message}</p>
-              <button className="btn btn-secondary" onClick={e=>this.toggle()}><span className="far fa-edit"/>Boop to Edit</button>
+              <button className="btn btn-secondary" onClick={e=>this.toggle()}>
+              <span className="far fa-edit"/>Boop to Edit</button>
               <button className="btn btn-danger" onClick={e=>msgToObjAndMethod(e, "delete", messageId)}><span className="far fa-trash-alt"/>Boop to Delete</button>
             </div>
           </div>
@@ -31,12 +32,12 @@ class Message extends Component  {
             <h5 className="card-header">Oh look, <i className="far fa-hand-point-left"></i> <em>somebody</em> wants to edit a message</h5>
             <div className="card-body">
               <form onSubmit={e=>{
-                e.preventDefault() 
                 msgToObjAndMethod(e, "edit", messageId)
-              }}>
-              <input type="text" className="form-control" id="nameInput" placeholder="Fine, change my name"/>
-              <input type="text" className="form-control" id="messageInput" placeholder="My message, too, I don't care"/>
-              <button className="btn btn-outline-warning mt-2" type="Submit" onClick={e=>this.toggle()}><span className="fas fa-hammer"/>DO IT</button> 
+                this.toggle()}}>
+              <input type="text" className="form-control" id="nameInput" defaultValue={name} required/>
+              <input type="text" className="form-control" id="messageInput" defaultValue={message} required/>
+              <button className="btn btn-outline-warning mt-2" type="Submit">
+              <span className="fas fa-hammer"/>DO IT</button> 
               </form>
             </div> 
           </div>
