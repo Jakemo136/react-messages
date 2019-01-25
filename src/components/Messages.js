@@ -1,7 +1,7 @@
 import React from 'react';
 import Message from './Message'
 
-const Messages = ({messages, editMessage, msgToObjAndMethod, popEditValues}) => {
+const Messages = ({messages, deleteMessage, makeMsgObj}) => {
   return(
     <div>
       {messages.map(({name, message, id})=><Message
@@ -9,8 +9,8 @@ const Messages = ({messages, editMessage, msgToObjAndMethod, popEditValues}) => 
         messageId={id}
         name={name}
         message={message}
-        editMessage={editMessage}
-        msgToObjAndMethod={msgToObjAndMethod}
+        deleteMessage={deleteMessage}
+        makeMsgObj={makeMsgObj}
       />)}
     </div>
   )

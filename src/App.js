@@ -27,25 +27,16 @@ class App extends Component {
     this.setState({[prop]: !this.state[prop]})
   }
 
-  messageToObjAndMethod = (e, method, messageId) => {
-    e.preventDefault() 
-    let name = e.target.nameInput.value 
-    let message = e.target.messageInput.value
-
-    if (method === "submit" || method === "edit") { 
-      const messageObj = JSON.stringify({ name, message })
-      if (method === "submit"){
-        this.submitMessage(messageObj)
-        e.target.nameInput.value = ""
-        e.target.messageInput.value = ""
-      }
-      if (method === "edit") {
-        this.editMessage(messageId, messageObj)
-      }
+  makeMsgObj = (input, method, messageId) => {
+    let name = input.name
+    let message = input.message
+    const messageObj = JSON.stringify({ name, message })
+    
+    if (method === "submit"){
+      this.submitMessage(messageObj)
     }
-    if (method === "delete") {
-      const idObj = JSON.stringify({ id: messageId })
-      this.deleteMessage(messageId, idObj)
+    if (method === "edit") {
+      this.editMessage(messageId, messageObj)
     }
   }
 
@@ -74,11 +65,12 @@ class App extends Component {
     ]})
   }
 
-  deleteMessage = async (messageId, messageObj) => {
+  deleteMessage = async (messageId) => {
     let newMessages = this.state.messages.filter(message => (message.id !== messageId))
+    const idObj = JSON.stringify({ id: messageId })
     await fetch(`${API}/${messageId}`, {
       method: 'DELETE',
-      body: messageObj,
+      body: idObj,
       headers: this.state.headers
     })
     this.setState({messages: newMessages})
@@ -95,16 +87,15 @@ class App extends Component {
             submitMessage={this.submitMessage} 
             toggle={this.toggle} 
             toggleCompose={this.state.toggleCompose}
-            msgToObjAndMethod={this.messageToObjAndMethod}
+            makeMsgObj={this.makeMsgObj}
             />
           <Messages 
-            messages={this.state.messages} 
-            editMessage={this.editMessage}
+            messages={this.state.messages}
             deleteMessage={this.deleteMessage}
-            msgToObjAndMethod={this.messageToObjAndMethod}/>
+            makeMsgObj={this.makeMsgObj}/>
         </div>
       </div>
-    );
+    )
   }
 }
 
